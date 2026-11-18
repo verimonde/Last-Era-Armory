@@ -1,0 +1,633 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Armory · Weapon Tables (Revision V)</title>
+<style>
+@page {
+ size: A4 landscape;
+ margin: 14mm 13mm 14mm 13mm;
+ @top-left { content: 'FIELD ARMORY  •  WEAPONS REFERENCE'; font: 8.1pt 'Cabin',sans-serif; letter-spacing: .08em; color:#7b5a3b; }
+ @top-right { content: 'REVISION V  /  HOMEBREW'; font: 8.1pt 'Cabin',sans-serif; letter-spacing: .08em; color:#7b5a3b; }
+ @bottom-left { content: 'B · BLUDGEONING   /   P · PIERCING   /   S · SLASHING'; font: 7.2pt 'Cabin',sans-serif; color:#795d46; }
+ @bottom-right { content: 'PAGE ' counter(page) '  OF  ' counter(pages); font: 8pt 'Cabin',sans-serif; color:#795d46; }
+}
+:root {--ink:#292017;--red:#712d29;--red2:#9e4940;--tan:#c0a178;--stripe:#f0e4d0;--parchment:#fbf6eb;--gold:#a7844d;--line:#d1baa0;}
+* {box-sizing:border-box}
+html {background:white}
+body{color:var(--ink);margin:0;font:9.05pt/1.26 'Cabin',sans-serif;background:#fff}
+main{width:100%}
+h1,h2,h3,h4{font-family:'EB Garamond',serif}
+.hero{border-top:4pt solid var(--red);border-bottom:1.4pt solid #aa8056;padding:6mm 0 4mm;margin:0 0 5mm;display:flex;align-items:end;justify-content:space-between;gap:8mm}
+.hero .crest{display:inline-block;color:var(--red);font:27pt 'EB Garamond',serif;letter-spacing:-.02em;vertical-align:baseline; margin-right:3mm}
+.hero .eyebrow{color:#8d6540;text-transform:uppercase;letter-spacing:.19em;font:700 8pt 'Cabin',sans-serif;margin:0 0 1mm}
+.hero h1{font-size:30pt;line-height:.94;margin:0;font-weight:700;letter-spacing:.012em;color:#482c21}
+.hero .deck{font:9.2pt 'Cabin',sans-serif;margin:2.5mm 0 0;color:#574a3c}
+.hero .edition{min-width:33mm;border-left:1px solid #c6a784;padding-left:5mm;text-align:right;color:#634b35;font:9pt 'Cabin',sans-serif}
+.hero .edition b{font:20pt 'EB Garamond',serif;color:var(--red)}
+.legend{background:#f8f0e3;border:1px solid #d7c3a8;padding:3.0mm 4mm;margin-bottom:5mm;display:flex;gap:6mm;align-items:center;justify-content:space-between; font-size:8.2pt}
+.legend strong{color:var(--red)} .legend .pill{white-space:nowrap}.legend .sub{color:#775c48}
+.section-banner{display:flex;align-items:baseline;gap:7mm;margin-top:3.7mm;padding:2.2mm 3mm 1.8mm;background:var(--red);color:#fff;border-bottom:2pt solid #b98b58;break-after:avoid}
+.section-banner h2{font-weight:600;font-size:15.5pt;line-height:1;margin:0;color:#fff}
+.section-kicker{font-size:7.8pt;font-weight:700;letter-spacing:.11em;white-space:nowrap;color:#f5dcbb}
+.dot{font-size:6pt;padding:0 1.2mm;color:#e0c8a5}
+.weapon-section{break-before:auto}
+.weapon-section.martial .section-banner{background:#673729}
+.weapon-section.expert .section-banner{background:#3e4651}
+.weapon-section.expert .section-kicker{color:#ded7c9}
+.arms-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:0 0 5.5mm;border:1px solid #c8a77d}
+.arms-table col.name{width:19.6%}.arms-table col.dmg{width:7.9%}.arms-table col.crit{width:9.1%}.arms-table col.type{width:8.5%}.arms-table col.distance{width:11.4%}.arms-table col.use{width:43.5%}
+.arms-table thead{display:table-header-group}
+.arms-table th{background:#d5b995;color:#3c2718;border-right:1px solid #b68e67;border-bottom:1.2pt solid #9b744e;letter-spacing:.05em;text-transform:uppercase;font:700 7.65pt 'Cabin',sans-serif;padding:2.6mm 2.2mm;text-align:left}
+.arms-table th:nth-child(n+2):nth-child(-n+5){text-align:center}
+.arms-table td{border-bottom:.45pt solid #dbccb7;border-right:.4pt solid #e0cfb4;vertical-align:top;padding:2.6mm 2mm;overflow-wrap:break-word;word-wrap:break-word}
+.arms-table td:nth-child(2),.arms-table td:nth-child(3),.arms-table td:nth-child(4),.arms-table td:nth-child(5){text-align:center;white-space:normal}
+.arms-table .weapon-group{break-inside:avoid;page-break-inside:avoid}
+.arms-table .weapon-group:nth-of-type(even) .single-row,.arms-table .weapon-group:nth-of-type(even) .mode-row{background:#f5ecdd}
+.arms-table .single-row{background:#fcf9f1}
+.weapon-name{font:700 11.5pt/1.02 'EB Garamond',serif;color:#5d2c25;display:block}
+.weapon-flavor{font:7.65pt/1.18 'Cabin',sans-serif;color:#75634f;display:block;margin-top:1.15mm}
+.details{font:8.5pt/1.23 'Cabin',sans-serif}
+.mode-row td{padding:2mm 2mm;background:#fcfaf5}
+.mode-row td:first-child{padding-left:4.6mm;font-weight:700;color:#4d3930}
+.mode-arrow{color:#ae6c42;font-size:13pt;line-height:0;margin-right:1.4mm;vertical-align:middle}
+.weapon-head td{background:#e9d8bb;padding:1.6mm 2mm 1.8mm;border-top:1.5pt solid #a78056;border-bottom:.55pt solid #bd9e78}
+.weapon-head .weapon-name{display:inline;margin-right:2.4mm}
+.weapon-head .weapon-flavor{display:inline;margin:0;color:#5c4a38}
+.same-weapon{float:right;font-size:7pt;font-weight:700;letter-spacing:.065em;color:#7b4c2e;margin:1mm 0 0 2mm}
+.shared-special td{background:#f0e7d7;color:#4a3b2c;padding:2mm 2.4mm 2.5mm;font-size:8.25pt;line-height:1.22;border-bottom:1.2pt solid #c6a780}
+.special-label{font:700 7pt 'Cabin',sans-serif;letter-spacing:.08em;color:#904638;margin-right:2mm;white-space:nowrap}
+.quiet{color:#82796a;font-style:italic;font-size:8pt}
+strong{font-weight:700}
+.rules-break{break-before:page;page-break-before:always}
+.appendix-cover{border-top:3pt solid var(--red);padding-top:4mm;margin:0 0 5mm}
+.appendix-cover .overline{font:700 8pt 'Cabin';letter-spacing:.12em;color:#a4774b;text-transform:uppercase}
+.appendix-cover h2{font:700 25pt 'EB Garamond',serif;margin:0;color:#5b2f24}
+.appendix-cover p{margin:1mm 0;color:#75634f;font:9pt 'Cabin',sans-serif}
+.rules-body{columns:2;column-gap:10mm;column-rule:.8pt solid #ddcdb7;font:9.1pt/1.32 'Cabin',sans-serif}
+.rules-body h3{font:700 15pt 'EB Garamond',serif;color:#6b3328;margin:0 0 2mm;padding-bottom:1mm;border-bottom:.8pt solid #d2b38c;break-after:avoid}
+.rules-body p{margin:0 0 3.4mm}
+.rules-body ul{padding-left:5mm;margin:0 0 3mm}
+.rules-body li{margin-bottom:1.8mm}
+.rules-body h3:not(:first-child){margin-top:5mm}
+.rule-item{break-inside:avoid}
+.glossary-title{font:700 25pt 'EB Garamond',serif;color:#5b2f24;margin:0 0 1mm}
+.glossary-intro{font-size:9pt;margin:0 0 4mm;color:#615444}
+.glossary{width:100%;border-collapse:collapse;table-layout:fixed;font-size:8.85pt;line-height:1.29}
+.glossary th{text-align:left;background:#734333;color:#fff;padding:2.3mm;font-size:8.5pt;letter-spacing:.04em}
+.glossary th:first-child{width:28%}
+.glossary tr:nth-child(odd) td{background:#f6eddd}
+.glossary td{vertical-align:top;padding:2.6mm 3mm;border-bottom:.5pt solid #dcc5a5}
+.glossary td:first-child{font-weight:700;color:#59392c}
+.glossary tr{break-inside:avoid}
+.smallprint{margin-top:4mm;padding:3.5mm;background:#f5ecde;border-left:2pt solid #a36d44;font-size:8.8pt}
+.appendix-content > p, .appendix-content > ul{font-size:9pt;line-height:1.35}
+@media screen{
+ body{background:#d5c6af;padding:20px}
+ main{max-width:1320px;margin:auto;padding:28px 40px 40px;background:#fffaf1;box-shadow:0px 7px 30px #816e5880}
+ .rules-break{border-top:2px solid #c7b090;margin-top:25px;padding-top:20px}
+}
+</style></head><body><main>
+<header class="hero"><div><div class="eyebrow">Custom tabletop roleplaying rules • Equipment appendix</div><h1><span class="crest">✦</span>WEAPONS &amp; ATTACK PROFILES</h1><div class="deck">78 tools of war • grouped by proficiency • every alternate attack belongs to its parent weapon</div></div><div class="edition">FIELD ARMORY<br><b>V</b><br>REVISION 5</div></header>
+<aside class="legend"><span><strong>PROFICIENCY</strong> Simple / Martial / Expert</span><span class="pill"><strong>DAMAGE TYPES</strong> B = Bludgeoning · P = Piercing · S = Slashing</span><span class="sub">B bypasses DR • 'x3' means 20/x3 • No unprovided cost/weight data</span></aside>
+<section class="weapon-section simple" id="sec-simple-unarmed-and-worn">
+<div class="section-banner"><div class="section-kicker">SIMPLE WEAPONS <span class="dot">◆</span> 4 weapons</div><h2>Unarmed and worn</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Unarmed strike</span><span class="weapon-flavor">A fallback close-contact impact attack.</span></td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Light; normally nonlethal and requires no equipment to draw. With <strong>Expert Weapon Proficiency (Unarmed)</strong>, damage increases to <strong>1d6</strong>, the user may deal lethal damage, and before each attack may choose <strong>B (x2)</strong>, <strong>P (x3)</strong>, or <strong>S (19–20/x2)</strong>. Use the chosen type's normal critical profile for that attack.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Gauntlet</span><span class="weapon-flavor">A metal-reinforced striking hand.</span></td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Cannot be disarmed while worn. This is an armed strike.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Push dagger</span><span class="weapon-flavor">A short blade aligned with the fist for direct, short thrusts.</span></td><td>1d4</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">Light; +2 to attack with this dagger while grappling.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Spiked gauntlet</span><span class="weapon-flavor">A fixed projecting point on a striking glove.</span></td><td>1d4</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">Light; cannot be disarmed while worn.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section simple" id="sec-simple-light-and-one-handed">
+<div class="section-banner"><div class="section-kicker">SIMPLE WEAPONS <span class="dot">◆</span> 7 weapons</div><h2>Light and one-handed</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Knife</span><span class="weapon-flavor">A small multipurpose edge and point, easy to hide.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Cut</td><td>1d4</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d4</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d4</td><td>x3</td><td>P</td><td>Thrown 3 m</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> +6 on Legerdemain checks to conceal it on your body. Light.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Club</span><span class="weapon-flavor">A readily available striking implement; effective with little training.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Strike</td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d6</td><td>x2</td><td>B</td><td>Thrown 3 m</td><td class="details">Club leaves the hand until retrieved.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Light mace</span><span class="weapon-flavor">A compact flanged or solid striking head controlled with one hand.</span></td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Light. <strong>Draw or stow this weapon as a free action</strong> on your turn.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Heavy mace</span><span class="weapon-flavor">A dense head concentrates blunt force at close range.</span></td><td>1d8</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Its <strong>1d8 base damage</strong>, above the usual 1d6 of a simple one-handed weapon, represents the force of the heavy head. The B damage type already bypasses DR; no armor-dependent bonus applies.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Morningstar</span><span class="weapon-flavor">A dense, spiked head deals impact and puncture at the same instant.</span></td><td>1d8</td><td>x3</td><td>B + P</td><td>Adjacent</td><td class="details"><strong>One attack only.</strong> Its entire specialty is the two simultaneous damage types; no additional weapon bonus.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Sickle</span><span class="weapon-flavor">A hooked cutting edge can pull a leg or catch a limb.</span></td><td>1d4</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Light; <strong>+2 on trip attempts</strong> made using its hook. A trip is a maneuver, not another attack mode.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Shortspear</span><span class="weapon-flavor">A compact thrusting spear that can be cast or braced.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><strong>x2 damage</strong> on a readied attack against a charge.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d6</td><td>x3</td><td>P</td><td>Thrown 6 m</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section simple" id="sec-simple-two-handed-weapons">
+<div class="section-banner"><div class="section-kicker">SIMPLE WEAPONS <span class="dot">◆</span> 3 weapons</div><h2>Two-handed weapons</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Longspear</span><span class="weapon-flavor">An extended point designed to keep advancing enemies outside sword distance.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>3 m</td><td class="details"><strong>x2 damage</strong> on a readied attack against a charge; cannot strike adjacent with point.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Butt strike</td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Shorten grip and strike with the end of the same shaft.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Quarterstaff</span><span class="weapon-flavor">A balanced staff used to intercept blows and strike with either end.</span></td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Double weapon: each end has the <strong>same attack profile</strong>; use the usual two-weapon rules if both ends attack. <strong>+2 parry bonus to AC</strong> when held in two hands. No need for redundant identical attack modes.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Spear</span><span class="weapon-flavor">An infantry spear that braces, thrusts, and can be thrown.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><strong>x2 damage</strong> on a readied attack against a charge.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d8</td><td>x3</td><td>P</td><td>Thrown 6 m</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Butt strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Blunt strike with rear end; does not receive the brace bonus.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section simple" id="sec-simple-ranged-and-thrown">
+<div class="section-banner"><div class="section-kicker">SIMPLE WEAPONS <span class="dot">◆</span> 5 weapons</div><h2>Ranged and thrown</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Dart</span><span class="weapon-flavor">A light missile used to harass while advancing or withdrawing.</span></td><td>1d4</td><td>x3</td><td>P</td><td>Thrown 6 m</td><td class="details">Draw a dart as a free action as part of throwing it. <strong>+2 to attack if you moved at least 3 m during this turn before making the throw.</strong></td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Javelin</span><span class="weapon-flavor">A thrown shaft intended to stick in a shield and hinder its use.</span></td><td>1d6</td><td>x3</td><td>P</td><td>Thrown 9 m</td><td class="details"><strong>Shield pin:</strong> If you miss a creature carrying an equipped shield and the attack die is <strong>not a natural 1</strong>, its shield becomes unusable until the <strong>end of that creature’s next turn</strong>. The shield remains carried but provides no shield-derived benefits. A hit deals ordinary damage and does not trigger Shield pin.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Sling</span><span class="weapon-flavor">A flexible missile weapon throwing a stone or cast bullet with substantial force.</span></td><td>1d6</td><td>x2</td><td>B</td><td>15 m</td><td class="details">May use an ordinary suitably sized stone or a sling bullet without an improvised-ammunition attack penalty.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Crossbow, light</span><span class="weapon-flavor">A cocked launcher suited to an accurate, prepared opening shot.</span></td><td>1d10</td><td>x3</td><td>P</td><td>36 m</td><td class="details">All solid bolts use <strong>Overpenetration</strong>. <strong>+2 attack</strong> if firing this crossbow is the first action of your turn. Reload: <strong>move action</strong> (proposed default).</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Crossbow, heavy</span><span class="weapon-flavor">A powerful windlass-type launcher optimized for a hard first impact.</span></td><td>2d8</td><td>x3</td><td>P</td><td>60 m</td><td class="details">All solid bolts use <strong>Overpenetration</strong>. <strong>Reloading takes one standard action.</strong> The substantial damage and reload cost are its specialization.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section martial" id="sec-martial-light-weapons">
+<div class="section-banner"><div class="section-kicker">MARTIAL WEAPONS <span class="dot">◆</span> 10 weapons</div><h2>Light weapons</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Hand axe</span><span class="weapon-flavor">A compact <strong>martial fighting axe</strong>, with a short fighting haft and cutting head; not a woodworking implement.</span></td><td>1d6</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Light; <strong>Axe-head/Mighty Blow</strong> rules apply. Its advantage is applying axe force in a light, shield-compatible grip.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Throwing axe</span><span class="weapon-flavor">A balanced fighting axe designed to remain effective when cast.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Head strike</td><td>1d6</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Axe-head/Mighty Blow applies to this melee strike.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d6</td><td>19–20/x2</td><td>S</td><td>Thrown 9 m</td><td class="details">Longer throwing range than a knife; Axe-head/Mighty Blow <strong>does not</strong> apply to a throw.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Light.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Light hammer</span><span class="weapon-flavor">A compact military hammer usable at hand or in a short throw.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hammer strike</td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d6</td><td>x2</td><td>B</td><td>Thrown 6 m</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Light; reliable blunt damage at either distance.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Kukri</span><span class="weapon-flavor">A forward-curved blade that draws a long cut through a small motion.</span></td><td>1d6</td><td>18–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Light. The expanded slashing critical range is its specialization.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Light pick</span><span class="weapon-flavor">A narrow metal point intended to drive force into a small contact area.</span></td><td>1d6</td><td>x4</td><td>P</td><td>Adjacent</td><td class="details">Light. The exceptional piercing critical multiplier is its specialization.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Sap</span><span class="weapon-flavor">A compact concealed striker designed to disable without cutting.</span></td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Light; deals nonlethal damage; +2 to attack a target unaware of the attacker.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Shield, light</span><span class="weapon-flavor">A small shield that can strike without surrendering its guard.</span></td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Retain the equipped shield’s shield-derived AC bonus when making this shield strike.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Shield, light spiked</span><span class="weapon-flavor">A small defensive shield with a fixed piercing boss or spike.</span></td><td>1d4</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">Retain the shield-derived AC bonus when striking with its spike.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Spiked armor</span><span class="weapon-flavor">Close-fitted projecting spikes for fighting while limbs are constrained.</span></td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">May attack during a grapple without freeing a hand; requires wearing the spikes.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Short sword</span><span class="weapon-flavor">A short sword for confined thrusts with a useful cutting edge.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">The point is optimized for a close thrust.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Cut</td><td>1d6</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Draw a short cutting edge across the target.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> <strong>Light weapon</strong>: you may use Might or Agility for attack rolls (see Terminology).</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section martial" id="sec-martial-one-handed-weapons">
+<div class="section-banner"><div class="section-kicker">MARTIAL WEAPONS <span class="dot">◆</span> 12 weapons</div><h2>One-handed weapons</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Arming sword</span><span class="weapon-flavor">A quick, manageable knightly sword with versatile point and edge.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Slash</td><td>1d8</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">+2 attack when this thrust is an attack of opportunity.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hilt bash</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Strike with guard or pommel.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Battleaxe</span><span class="weapon-flavor">A one-handed fighting axe built to exploit strong blows and shield-side cuts.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Axe cut</td><td>1d8</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Axe-head/Mighty Blow applies.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Shaft strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">A close impact attack; <strong>no</strong> Axe-head/Mighty Blow bonus.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Its original off-hand Might advantage is absorbed by the shared axe rule: an off-hand axe cut still receives <strong>1.5x Might</strong>. An axe cut made in one hand counts as two-handed for <strong>Mighty Blow benefits that depend on grip</strong>, although ordinary Might damage remains 1.5x in one hand.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Cestus</span><span class="weapon-flavor">A hardened fighting glove with a cutting face and a blunt knuckle.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Bladed strike</td><td>1d6</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Knuckle strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Light; choose Might or Agility for attack rolls with either mode.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Dagger</span><span class="weapon-flavor">A larger fighting knife with concealment and thrown utility.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Cut</td><td>1d6</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d6</td><td>x3</td><td>P</td><td>Thrown 3 m</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> +2 Legerdemain checks made to conceal it on your body. Light.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Flail</span><span class="weapon-flavor">A flexible-headed weapon that is hard to seize but hard to parry with.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Flail head</td><td>1d8</td><td>x2</td><td>B + P</td><td>Adjacent</td><td class="details">The original combined damage type is retained.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Shaft strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Light attack with the rigid shaft.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Cannot provide a parry bonus while equipped; <strong>+4 to resist disarm attempts</strong> against this weapon.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Heavy pick</span><span class="weapon-flavor">A full-size concentrated spike intended for decisive penetrating hits.</span></td><td>1d8</td><td>x4</td><td>P</td><td>Adjacent</td><td class="details">The x4 piercing critical multiplier is its specialization.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Rapier</span><span class="weapon-flavor">A long, narrow sword used for point control and quick counterattacks.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Coup de Jarnac</td><td>1d8</td><td>18–20/x3</td><td>P</td><td>Adjacent</td><td class="details"><strong>Immediately after an opponent misses you with a melee attack</strong>, make this counterthrust against that opponent with <strong>+2 to the attack roll</strong>; uses the campaign's reactive-attack allowance.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hilt strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Strike with the guard or pommel.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Coup de Jarnac is a <strong>triggered attack of this same rapier</strong>, not a permanent critical upgrade to its ordinary Thrust. It requires a missed enemy melee attack; action/reaction limits come from the combat rules.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Scimitar</span><span class="weapon-flavor">A curved cutter specialized in draw cuts through an exposed target.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Draw cut</td><td>1d8</td><td>18–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Expanded slashing critical range.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hilt strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Shield, heavy</span><span class="weapon-flavor">A broad shield with enough mass for a serious shield strike.</span></td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Retain the shield-derived AC bonus when making a shield strike.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Shield, heavy spiked</span><span class="weapon-flavor">A heavy shield with a forward point used to thrust.</span></td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">Retain the shield-derived AC bonus when striking with the spike.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Trident</span><span class="weapon-flavor">A multi-pronged spear able to trap a weapon between its tines.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d8</td><td>x3</td><td>P</td><td>Thrown 3 m</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> +2 on disarm attempts using the trident’s side prongs; this is a maneuver, not a third damaging attack mode.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Warhammer</span><span class="weapon-flavor">A military hammer with a striking face and a back-point.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hammer face</td><td>1d8</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Blunt impact; B damage bypasses DR.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Back-point thrust</td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">Focused piercing attack from the hammer’s pointed back.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section martial" id="sec-martial-two-handed-weapons">
+<div class="section-banner"><div class="section-kicker">MARTIAL WEAPONS <span class="dot">◆</span> 8 weapons</div><h2>Two-handed weapons</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Falchion</span><span class="weapon-flavor">A broad-edged two-handed blade optimized for maximum cutting damage.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Broad cut</td><td>2d6</td><td>18–20/x2</td><td>S</td><td>Adjacent</td><td class="details">The highest base slashing dice in this catalog.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hilt strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Glaive</span><span class="weapon-flavor">A long single-edged blade for sweeping cuts at the perimeter of a formation.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Pole-blade cut</td><td>1d10</td><td>19–20/x2</td><td>S</td><td>3 m</td><td class="details">+2 attack on a readied cut when an enemy enters the weapon’s 3 m reach.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Butt strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">A close defensive strike, using the other end of the same pole.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Greataxe</span><span class="weapon-flavor">A two-handed war axe that concentrates a powerful cleaving stroke.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Chop</td><td>1d12</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Uses the <strong>heavy-axe Mighty Blow exception</strong>: +3 damage per attack penalty point in two hands, +1.5 if legitimately wielded one-handed, in place of standard Mighty Blow scaling and the shared +1.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Haft strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">The solid wooden haft does not receive axe damage bonuses.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Greatclub</span><span class="weapon-flavor">A massive impact weapon for overwhelming balance and stance.</span></td><td>1d10</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">After dealing damage with a greatclub, gain <strong>+2 on the next shove maneuver</strong> against that target before the end of this turn. Shove still consumes its normal attack/action.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Heavy flail</span><span class="weapon-flavor">A two-handed weighted flail used to swing around an opponent’s guard.</span></td><td>1d10</td><td>19–20/x2</td><td>B</td><td>Adjacent</td><td class="details">+2 on trip attempts using the chain; +4 to resist being disarmed; cannot provide a parry bonus. A trip is a maneuver, not an additional weapon attack.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Greatsword</span><span class="weapon-flavor">A long, two-handed sword with strong leverage for cuts, thrusts and guards.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Two-handed cut</td><td>1d10</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Point thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Pommel strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> +2 parry bonus to AC while held with two hands. Its general advantage is defensive control, not maximum cutting dice.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Lance</span><span class="weapon-flavor">A long, stiff point used to transfer a mounted rider’s momentum.</span></td><td>1d10</td><td>x3</td><td>P</td><td>3 m</td><td class="details"><strong>x2 damage</strong> on a successful mounted charge attack. Can be used one-handed while mounted; two hands on foot. Does not strike adjacent foes at 1.5 m.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Scythe</span><span class="weapon-flavor">A reinforced war scythe built to cut, draw and catch a limb.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Slashing cut</td><td>2d4</td><td>19–20/x3</td><td>S</td><td>Adjacent</td><td class="details">The extended draw-cut profile is a scythe-specific exception to ordinary slashing criticals.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hook-point thrust</td><td>1d8</td><td>x4</td><td>P</td><td>Adjacent</td><td class="details">Concentrated point specialized for critical damage.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> +2 on trip attempts using the curved blade. Trip is a maneuver, not a further attack mode.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section martial" id="sec-martial-bows">
+<div class="section-banner"><div class="section-kicker">MARTIAL WEAPONS <span class="dot">◆</span> 4 weapons</div><h2>Bows</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Shortbow</span><span class="weapon-flavor">A short-limbed bow suited to quick shots at close battlefield distances.</span></td><td>1d6</td><td>x3</td><td>P</td><td>24 m</td><td class="details"><strong>All bows</strong> ignore cover short of total/full cover when shooting targets <strong>within 9 m</strong>, without attack penalty. Shortbow additionally gains <strong>+2 attack within 6 m</strong>.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Longbow</span><span class="weapon-flavor">A long-limbed bow optimized for extended aimed fire.</span></td><td>1d8</td><td>x3</td><td>P</td><td>45 m</td><td class="details">Uses shared <strong>Bow cover bypass (9 m)</strong>. Ignore the first –2 attack penalty from firing into the second range increment; further range penalties apply normally.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Composite shortbow</span><span class="weapon-flavor">A compact composite bow constructed to transfer a strong draw.</span></td><td>1d6</td><td>x3</td><td>P</td><td>30 m</td><td class="details">Uses shared <strong>Bow cover bypass (9 m)</strong>. Add the full positive Might modifier to arrow damage, subject to your broader character rules.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Composite longbow</span><span class="weapon-flavor">A high-draw composite weapon combining range and Might-driven energy.</span></td><td>1d8</td><td>x3</td><td>P</td><td>54 m</td><td class="details">Uses shared <strong>Bow cover bypass (9 m)</strong>. Add the full positive Might modifier to arrow damage, subject to your broader character rules.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section expert" id="sec-expert-polearms">
+<div class="section-banner"><div class="section-kicker">EXPERT WEAPONS <span class="dot">◆</span> 3 weapons</div><h2>Polearms</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Guisarme</span><span class="weapon-flavor">A long hooked blade intended to pull enemies from their feet at a distance.</span></td><td>1d10</td><td>19–20/x2</td><td>S</td><td>3 m</td><td class="details"><strong>+4 on trip attempts</strong> using the long hook against a creature at 3 m. Cannot use blade against adjacent foes.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Halberd</span><span class="weapon-flavor">A compact infantry polearm with an axe blade, top thrusting spike and rear hook.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Chop</td><td>1d10</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details"><strong>Heavy-axe Mighty Blow exception</strong>: +3 damage per attack penalty point with two-handed leverage; +1.5 if legitimately held one-handed. <strong>+4 on sunder attempts</strong> using the axe blade.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Top-spike thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><strong>x2 damage</strong> if this thrust was readied against a charge.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Shaft strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Short-haft close strike; no axe bonuses.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> <strong>+2 to trip</strong> using the rear hook; <strong>+4 to sunder</strong> with the Chop attack. The rear hook is a control tool, not a separate damage mode. Chop uses the heavy-axe Mighty Blow exception in place of the ordinary axe-family +1. <strong>No 3 m reach</strong> for this halberd.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Ranseur</span><span class="weapon-flavor">A long central spear flanked by prongs for catching an enemy weapon.</span></td><td>1d10</td><td>x3</td><td>P</td><td>3 m</td><td class="details"><strong>+4 on disarm and +4 on sunder attempts</strong> using the side prongs at 3 m. Cannot thrust adjacent foes with the head. These are maneuver bonuses, not extra damage or separate attack modes.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section expert" id="sec-expert-light-weapons">
+<div class="section-banner"><div class="section-kicker">EXPERT WEAPONS <span class="dot">◆</span> 4 weapons</div><h2>Light weapons</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Kama</span><span class="weapon-flavor">A hooked cutting blade used to catch limbs and pull an opponent off balance.</span></td><td>1d6</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Light; +2 on trip attempts using the hook; trip is a maneuver.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Nunchaku</span><span class="weapon-flavor">A pair of linked batons used for compact impact and weapon entanglement.</span></td><td>1d6</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Light; +2 on disarm attempts using the connecting link.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Sai</span><span class="weapon-flavor">A narrow central point and two lateral prongs, made for trapping weapons.</span><span class="same-weapon">ONE WEAPON · 3 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Point thrust</td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Flat-bar strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Throw</td><td>1d6</td><td>x3</td><td>P</td><td>Thrown 3 m</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Light; +2 on disarm attempts using the side prongs.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Siangham</span><span class="weapon-flavor">A small straight point for piercing at close contact.</span></td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">Light; +2 to attack against a creature you are grappling.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section expert" id="sec-expert-one-handed-weapons">
+<div class="section-banner"><div class="section-kicker">EXPERT WEAPONS <span class="dot">◆</span> 3 weapons</div><h2>One-handed weapons</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Bastard sword</span><span class="weapon-flavor">A hand-and-a-half sword designed to switch grips without changing weapons.</span><span class="same-weapon">ONE WEAPON · 4 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> One-handed cut</td><td>1d8</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Use in one hand.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Two-handed cut</td><td>1d10</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Use in two hands; normal two-handed Might rules apply.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details">Either grip.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hilt strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Either grip.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Dwarven waraxe</span><span class="weapon-flavor">A broad-headed axe sized to give a one-handed fighter heavy cutting force.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Axe cut</td><td>1d10</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Axe-head/Mighty Blow applies; exceptional one-handed damage die.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Haft strike</td><td>1d4</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">No axe-head bonuses.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> May be gripped with two hands; use the 2x Might two-handed axe bonus for its axe cut in that grip.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Whip</span><span class="weapon-flavor">A flexible lash suited to distance control and entangling attacks.</span></td><td>1d4</td><td>19–20/x2</td><td>S</td><td>3 m</td><td class="details">Deals nonlethal damage; +2 on trip or disarm attempts at 3 m using the lash. Armor and DR apply under the ordinary rules, with no special armor-category restriction.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section expert" id="sec-expert-two-handed-and-double-weapons">
+<div class="section-banner"><div class="section-kicker">EXPERT WEAPONS <span class="dot">◆</span> 7 weapons</div><h2>Two-handed and double weapons</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Crescent sword</span><span class="weapon-flavor">A two-bladed crescent weapon with identical cutting ends.</span></td><td>2d4 per end</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Double weapon; both ends have the <strong>same profile</strong>. Both attacks require available attacks under two-weapon rules. No extra attacks are granted.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Orc double axe</span><span class="weapon-flavor">A single haft with an axe head at each end for repeated chopping attacks.</span></td><td>1d8 per end</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Double weapon, identical heads. Axe-head/Mighty Blow applies to melee cuts (use the <strong>two-handed</strong> Might multiplier only when the attack actually uses two-handed leverage; an off-hand axe cut gets the one-handed 1.5x Might axe rule). If the first head hits, the second head gets <strong>+2 attack</strong> against that same target this turn; it still needs an available attack.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Spiked chain</span><span class="weapon-flavor">A long flexible spiked chain able to strike or catch from varying distances.</span></td><td>1d10</td><td>x3</td><td>P</td><td>Adjacent or 3 m</td><td class="details">+2 on trip attempts using the chain. Can reach adjacent or 3 m; does not require an alternate attack mode to change distance.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Dire flail</span><span class="weapon-flavor">A pair of weighted heads on one haft with swinging chains.</span></td><td>1d8 per end</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details">Double weapon, identical striking ends; +2 on trip attempts using the flexible heads. Both ends attack only if attacks are available under two-weapon rules.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Gnome hooked hammer</span><span class="weapon-flavor">An impact hammer on one end and a hooked piercing point on the other.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hammer face</td><td>1d8</td><td>x2</td><td>B</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Hook thrust</td><td>1d6</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><span class="quiet">Standard attack</span></td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Double weapon: the two modes are opposite ends of <strong>one</strong> weapon; +2 to trip attempts using the hook. Extra off-hand attack follows standard rules.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Two-bladed sword</span><span class="weapon-flavor">A double-ended sword with matching cutting blades and flexible guard.</span></td><td>1d8 per end</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Double weapon, identical ends. +2 parry AC during a turn in which you attack with only one end; using both ends loses that bonus for the turn.</td></tr>
+</tbody>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Dwarven urgrosh</span><span class="weapon-flavor">A combined axe and spear with a different role at either end.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Axe cut</td><td>1d8</td><td>19–20/x2</td><td>S</td><td>Adjacent</td><td class="details">Axe-head/Mighty Blow applies to this end.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Spear thrust</td><td>1d8</td><td>x3</td><td>P</td><td>Adjacent</td><td class="details"><strong>x2 damage</strong> if readied against a charge.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> Double weapon: the two modes are opposite ends of <strong>one</strong> item. Using both ends follows two-weapon rules.</td></tr>
+</tbody>
+</table></section>
+<section class="weapon-section expert" id="sec-expert-ranged-and-thrown">
+<div class="section-banner"><div class="section-kicker">EXPERT WEAPONS <span class="dot">◆</span> 8 weapons</div><h2>Ranged and thrown</h2></div>
+<table class="arms-table"><colgroup><col class="name"/><col class="dmg"/><col class="crit"/><col class="type"/><col class="distance"/><col class="use"/></colgroup>
+<thead><tr><th scope="col">Weapon / attack</th><th scope="col">Damage</th><th scope="col">Critical</th><th scope="col">Type</th><th scope="col">Range</th><th scope="col">Special rules & use</th></tr></thead>
+<tbody class="weapon-group multi">
+<tr class="weapon-head"><td colspan="6"><span class="weapon-name">Crossbow, sauterelle</span><span class="weapon-flavor">A mechanical projector specialized for bombs, potions and alchemical vessels.</span><span class="same-weapon">ONE WEAPON · 2 ATTACK MODES</span></td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Alchemical vessel</td><td>2d4</td><td>x3</td><td>B + S + P</td><td>36 m</td><td class="details">Deals its original impact damage and applies the payload’s separate effect. <strong>No Overpenetration</strong> with vessels.</td></tr>
+<tr class="mode-row"><td><span class="mode-arrow">›</span> Solid bolt</td><td>2d4</td><td>x3</td><td>P</td><td>36 m</td><td class="details">Alternative fitted bolt carrier; solid bolts use <strong>Overpenetration</strong>.</td></tr>
+<tr class="shared-special"><td colspan="6"><span class="special-label">WEAPON SPECIALTY</span> The mixed B + S + P damage and x3 critical of the vessel mode are preserved from your source as an intentional exception. Reload time for this custom launcher remains unspecified.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Bolas</span><span class="weapon-flavor">Weighted cords thrown to entangle the legs of a moving foe.</span></td><td>1d4</td><td>x2</td><td>B</td><td>Thrown 3 m</td><td class="details">Nonlethal damage. +2 on ranged trip attempts using the bola; entangling/tripping is its purpose, not a separately listed weapon attack.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Crossbow, hand</span><span class="weapon-flavor">A small crossbow designed for concealment at short distances.</span></td><td>1d10</td><td>x3</td><td>P</td><td>9 m</td><td class="details">Uses <strong>Overpenetration</strong> with solid bolts; +2 Legerdemain checks to conceal it on the body. Reload: move action (proposed default).</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Crossbow, repeating light</span><span class="weapon-flavor">A light crossbow fitted with a five-bolt feed mechanism.</span></td><td>1d10</td><td>x3</td><td>P</td><td>36 m</td><td class="details">Uses <strong>Overpenetration</strong> for every solid bolt. <strong>Five-bolt magazine</strong>; index loaded bolts without a separate reload action; replacing the magazine costs one full-round action.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Crossbow, repeating heavy</span><span class="weapon-flavor">A heavy crossbow fitted with a five-bolt feed mechanism.</span></td><td>2d8</td><td>x3</td><td>P</td><td>60 m</td><td class="details">Uses <strong>Overpenetration</strong> for every solid bolt. <strong>Five-bolt magazine</strong>; index loaded bolts without a separate reload action; replacing the magazine costs one full-round action.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Net</span><span class="weapon-flavor">A corded restraint used to stop a target without striking it.</span></td><td>—</td><td>—</td><td>Control</td><td>Thrown 3 m</td><td class="details">On a successful attack, entangles the creature. Entangled creatures must escape or free themselves using your campaign’s restraint rules; no weapon damage.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Shuriken</span><span class="weapon-flavor">A compact small point thrown rapidly with little preparation.</span></td><td>1d4</td><td>x3</td><td>P</td><td>Thrown 3 m</td><td class="details">Light; draw one as part of a throwing attack without another action. Each thrown shuriken consumes one attack.</td></tr>
+</tbody>
+<tbody class="weapon-group single">
+<tr class="single-row"><td><span class="weapon-name">Blowgun (5e addition)</span><span class="weapon-flavor">A narrow tube for delivering small darts carrying substances.</span></td><td>1d4</td><td>x3</td><td>P</td><td>12 m</td><td class="details">If a shot hits and deals damage, deliver an applied alchemical or poison payload using that payload’s own rules. Payload application rules are external.</td></tr>
+</tbody>
+</table></section>
+<section class="rules-break" id="shared-rules"><div class="appendix-cover"><div class="overline">Reference appendix • A</div><h2>Weapon-family rules</h2><p>Shared mechanics printed in the weapon tables are defined here.</p></div><div class="rules-body"><h3 id="rule-axes-force-through-a-cutting-head">Axes: force through a cutting head</h3>
+<p><strong>Axe-head/Mighty Blow</strong> applies to an <strong>axe-head melee cutting attack</strong>, including martial hand axes, battleaxes, greataxes, dwarven waraxes, orc double axes, the axe end of an urgrosh and the axe blade of a halberd. It <strong>does not</strong> apply to a shaft/haft strike, a spear end, or a thrown axe.</p>
+<ul>
+<li>Add <strong>1.5 × Might modifier</strong> to damage when using the axe head in <strong>one hand</strong>.</li>
+<li>Add <strong>2 × Might modifier</strong> to damage when using the axe head with <strong>two-handed leverage</strong>.</li>
+<li>When using <strong>Mighty Blow</strong> on an eligible axe-head attack, add <strong>+1 damage</strong> on top of Mighty Blow’s normal benefit <strong>except for Greataxe Chop and Halberd Chop</strong>.</li>
+</ul>
+<p><strong>Heavy-axe Mighty Blow exception, Greataxe Chop and Halberd Chop only:</strong> Mighty Blow converts each point of attack penalty taken into <strong>+3 damage</strong> when used with two-handed leverage (normally +2), or <strong>+1.5 damage</strong> when legitimately wielded one-handed (normally +1). For example, a –2 attack penalty grants +6 damage in two hands. The one-handed case only applies if the wielder is otherwise allowed to use that weapon in one hand. This <strong>replaces</strong>, and does not stack with, the general axe family's extra +1 Mighty Blow damage. It modifies Mighty Blow damage, <strong>not</strong> the separate Might ability modifier.</p>
+<p>The underlying axe-head <strong>Might</strong> damage bonus remains <strong>1.5 × Might</strong> one-handed or <strong>2 × Might</strong> two-handed. This rule includes off-hand axe-head attacks. Never count an off-hand cut as two-handed leverage merely because the item has two ends. Apply your campaign’s ordinary rounding rule to fractional damage. The battleaxe preserves its one-handed Mighty Blow grip interaction below. <strong>Mighty Blow</strong> remains your Power Attack-style option; its attack penalties and activation follow your combat rules.</p>
+<h3 id="rule-spears-bracing-against-a-charge">Spears: bracing against a charge</h3>
+<p>Shortspear, spear, and longspear have <strong>x2 damage</strong> when a <strong>readied thrust</strong> hits a <strong>charging enemy</strong>. A halberd’s top spike also explicitly has that property. A lance has a different trigger: <strong>the wielder charges while mounted</strong>. Readying, charging and critical multipliers otherwise follow your combat system. The former arbitrary +2 to attack or +2 damage on spear brace is removed.</p>
+<h3 id="rule-bows-cover-bypass-within-9-m">Bows: cover bypass within 9 m</h3>
+<p><strong>Every bow</strong> ignores all cover-derived AC bonuses and cover-derived attack penalties when shooting a target <strong>within or at 9 m</strong>, so long as that cover is <strong>less than total/full cover</strong>. It requires no extra action and has no attack penalty. <strong>Total/full cover</strong> still prevents the shot. A bow does not ignore concealment, darkness, armor, or any defense unrelated to cover. There is <strong>no High-Arc Shot</strong> mode.</p>
+<h3 id="rule-crossbows-overpenetration">Crossbows: Overpenetration</h3>
+<p>When a <strong>solid crossbow bolt</strong> hits its first creature and inflicts <strong>at least 1 point of damage after DR and reductions</strong>, it continues along the same firing line and can hit <strong>one other creature directly behind the first</strong>. The second creature must lie on the original straight bolt trajectory, within range, and not behind total/full cover. Make a <strong>new attack roll at –2</strong> against that second creature. On a hit, roll normal bolt damage and <strong>halve the resulting damage (round down)</strong>. The second hit cannot critically hit or pass through another creature. No more than <strong>two creatures</strong> can be damaged by one bolt. Other occupants not directly behind the first creature are unaffected.</p>
+<p>An attack against the second creature is possible only when the first creature <strong>actually took damage</strong>. Alchemical vessels fired by a sauterelle and other non-solid projectiles do not Overpenetrate. The heavy crossbow deals <strong>2d8 piercing</strong> and requires <strong>one standard action to reload</strong>. The repeating heavy crossbow uses the same 2d8 bolt damage but feeds bolts from its magazine instead of individually reloading each shot.</p>
+<h3 id="rule-shields-javelin-obstruction">Shields: javelin obstruction</h3>
+<p><strong>Shield pin</strong> is specific to a javelin. If a thrown javelin <strong>misses a shield-bearing creature</strong> and the attack die was <strong>not a natural 1</strong>, the shield provides <strong>no shield-derived benefits</strong> until the <strong>end of that creature’s next turn</strong>. The javelin is considered lodged in or obstructing the shield. It does not make the shield physically disappear or count as a successful damaging hit. A second pin before recovery does not stack extra penalties; use the latest applicable end time. Full/total cover still prevents a legal attack, and the rule requires a legal attack roll at the creature. A creature is shield-bearing only if it has the shield equipped and active when targeted.</p>
+</div></section>
+<section class="rules-break" id="glossary"><div class="appendix-cover"><div class="overline">Reference appendix • B</div><h2>Combat terminology</h2><p>Terms and timing conventions used throughout the equipment tables.</p></div><table class="glossary">
+<thead>
+<tr>
+  <th>Term</th>
+  <th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Attack / attack mode</strong></td>
+  <td>An individual attack roll or maneuver. A mode describes one alternate use of the same weapon, never another weapon or a free additional attack.</td>
+</tr>
+<tr>
+  <td><strong>Attack bonus / damage bonus</strong></td>
+  <td>Attack bonus adds to the roll to hit AC; damage bonus adds to damage only.</td>
+</tr>
+<tr>
+  <td><strong>AC / shield bonus / parry bonus</strong></td>
+  <td>AC is the target’s defense value. Shield bonus comes from an equipped shield. Parry bonus comes from a weapon’s defensive use. Losing a shield’s benefits suspends its shield-derived bonuses and abilities; it does not remove armor or weapon parry bonuses.</td>
+</tr>
+<tr>
+  <td><strong>Natural 1</strong></td>
+  <td>The actual die face of 1 on the attack die, before adding modifiers.</td>
+</tr>
+<tr>
+  <td><strong>Critical</strong></td>
+  <td><code>19–20/x2</code> threatens on natural 19 or 20 and multiplies qualifying damage by 2 if confirmed under your core critical rules. <code>18–20/x3</code> threatens on natural 18, 19, or 20 and multiplies by 3. <code>x3</code> and <code>x4</code> multiply by 3 or 4. A plain <code>x2</code> means natural 20/x2. Printed profiles override the default for the damage type.</td>
+</tr>
+<tr>
+  <td><strong>DR / bypass DR</strong></td>
+  <td>Damage reduction subtracts a defined amount from eligible damage. A hit that has B as one of its damage types ignores DR. This does not ignore armor AC, hardness of objects or outright immunity.</td>
+</tr>
+<tr>
+  <td><strong>Cover / total cover</strong></td>
+  <td>Cover is a solid obstacle protecting a target. Total/full cover means there is no legal projectile attack through the obstruction. Any lesser cover is non-total cover. Bow cover bypass does not let arrows travel through a solid wall.</td>
+</tr>
+<tr>
+  <td><strong>Concealment</strong></td>
+  <td>Visual concealment, such as darkness or smoke, is distinct from physical cover.</td>
+</tr>
+<tr>
+  <td><strong>Adjacent / 3 m</strong></td>
+  <td>Adjacent normally means 1.5 m. A polearm with 3 m reach normally cannot use that attack at 1.5 m unless a separate attack mode permits it.</td>
+</tr>
+<tr>
+  <td><strong>Thrown / range increment</strong></td>
+  <td><code>Thrown N m</code> is a thrown range increment; an unqualified ranged distance is a projectile range increment. Attacks past the first increment take your standard range penalties (normally –2 per extra increment). Maximum range remains governed by your game.</td>
+</tr>
+<tr>
+  <td><strong>Light</strong></td>
+  <td>A light weapon may use Might or Agility for its attack modifier, as defined in your prior rule. Damage modifiers still use the normal damage rules unless a specialty says otherwise.</td>
+</tr>
+<tr>
+  <td><strong>Might / Agility / Legerdemain</strong></td>
+  <td>Character modifiers and the concealing-objects skill in your own system.</td>
+</tr>
+<tr>
+  <td><strong>Mighty Blow</strong></td>
+  <td>Your Power Attack-type option, trading attack accuracy for extra damage. Most axe-head attacks gain +1 bonus damage when using it; Greataxe Chop and Halberd Chop use the <strong>Mighty Blow exchange-rate exception</strong> in Weapon-family rules, with no additional +1. The activation rules come from your combat system.</td>
+</tr>
+<tr>
+  <td><strong>Free / move / standard / full-round action</strong></td>
+  <td>The action categories used by your combat system. Free actions take no action slot on your turn; move and standard actions consume their respective slots; full-round actions occupy the full-round slot. Where your action system differs, translate the category before play.</td>
+</tr>
+<tr>
+  <td><strong>Draw / stow</strong></td>
+  <td>Retrieve the item into the hand / return it to its holder or sheath. Stowing requires a suitable holder and a free hand or normal way of securing it.</td>
+</tr>
+<tr>
+  <td><strong>Readied attack / charge</strong></td>
+  <td>A readied attack is prepared in advance and triggers on its specified event. A charge is the campaign’s special committed attack movement. An attack readied against a charge must strike the charging creature when the trigger occurs.</td>
+</tr>
+<tr>
+  <td><strong>Attack of opportunity</strong></td>
+  <td>A reactive attack triggered by the broader combat rules; the arming sword bonus applies only when its thrust is that reaction.</td>
+</tr>
+<tr>
+  <td><strong>Coup de Jarnac</strong></td>
+  <td>A rapier-specific counterthrust triggered immediately after an opponent misses the wielder with a melee attack. The attack uses +2 to hit and 18–20/x3. The number of reactive attacks permitted and the action cost are governed by your broader combat rules; the counter does not grant unlimited free attacks.</td>
+</tr>
+<tr>
+  <td><strong>Expert Weapon Proficiency (Unarmed)</strong></td>
+  <td>A talent that changes unarmed strike damage to 1d6 and permits choosing bludgeoning, piercing or slashing per attack; use the normal critical profile for that chosen type. Expert is part of the talent name and does not change the strike’s Simple proficiency classification.</td>
+</tr>
+<tr>
+  <td><strong>Trip / disarm / shove / sunder</strong></td>
+  <td>Combat maneuvers to knock prone, remove a held weapon, push a target, or damage an object. Listed maneuver bonuses modify the relevant maneuver roll, <strong>not</strong> ordinary weapon-attack damage. A maneuver consumes the usual attack or action, and succeeds under your broader maneuver rules.</td>
+</tr>
+<tr>
+  <td><strong>Parry</strong></td>
+  <td>Defensive use of a weapon that grants AC. A weapon without parry capacity provides no weapon parry bonus while equipped.</td>
+</tr>
+<tr>
+  <td><strong>Grapple / confined space</strong></td>
+  <td>Grapple is the campaign’s close-hold combat state. Confined space is an area where a long swing is obstructed, as adjudicated by the GM.</td>
+</tr>
+<tr>
+  <td><strong>Double weapon / off-hand</strong></td>
+  <td>One item with two striking ends. Either end may be used; both may attack only when you have attacks available under two-weapon rules. An off-hand attack uses your game’s off-hand damage rule except where expressly modified; axe-head cuts use the special axe-family multiplier.</td>
+</tr>
+<tr>
+  <td><strong>Nonlethal</strong></td>
+  <td>Uses the campaign’s nonlethal damage rules.</td>
+</tr>
+<tr>
+  <td><strong>Unaware</strong></td>
+  <td>Target has not detected the attacker when the attack is declared.</td>
+</tr>
+<tr>
+  <td><strong>Payload / magazine</strong></td>
+  <td>A payload is a separate bomb, potion or alchemical effect governed by its item rules. A magazine stores the stated number of bolts, and cycling a loaded bolt is different from replacing an empty magazine.</td>
+</tr>
+<tr>
+  <td><strong>End of target’s next turn</strong></td>
+  <td>The effect stays active through the target’s next turn and expires only after that turn is complete, including all actions taken during it.</td>
+</tr>
+<tr>
+  <td><strong>Object hardness / structure</strong></td>
+  <td>Hardness is an object-specific resistance; structures and unattended objects include doors, walls, equipment not held or worn, and similar physical targets. Bludgeoning DR bypass does not bypass hardness.</td>
+</tr>
+</tbody>
+</table>
+<div class="smallprint"><p><strong>Unresolved core details:</strong> Your full Might rounding, overall Mighty Blow activation and exchange rules beyond the explicitly specified ratios, exact movement/action conversion, reaction limits for Coup de Jarnac, attack-of-opportunity triggers, maneuver resolution, concealment and maximum-range rules have not been supplied. This document does not silently substitute D&amp;D 3.5 values for them. Where this revision sets a new reload category, range, or maneuver bonus, it is identified as a homebrew design choice.</p>
+<hr />
+</div></section>
+<section class="rules-break appendix-content" id="reading"><div class="appendix-cover"><div class="overline">Reference appendix • C</div><h2>Reading the catalog</h2></div><p>The three proficiency categories are <strong>Simple</strong>, <strong>Martial</strong>, and <strong>Expert</strong>. Simple weapons are easy to use lethally with little training (e.g., maces, knives, ordinary crossbows); Martial weapons require practice to become effective (e.g., swords and bows); Expert weapons require specialist instruction because their handling is unintuitive (e.g., halberds, guisarmes, crescent swords, repeating crossbows). The category controls required proficiency, not the weapon’s damage type. <strong>Expert Weapon Proficiency (Unarmed)</strong> is a named talent that upgrades unarmed strikes without moving unarmed strikes out of Simple.</p>
+<p>Each <code>####</code> heading denotes <strong>one physical weapon</strong>. A weapon with only one damaging attack has <strong>one stat line</strong>, directly under its name, with <strong>no artificial attack-mode label</strong>. A weapon that can perform materially different attacks gets <strong>one table of modes under that same weapon</strong>. All rows in that table refer to the <strong>same item</strong>, and modes are alternatives, not extra granted attacks. A maneuver such as a trip or disarm is normally a <strong>weapon specialty</strong>, written under Special, rather than an attack mode, unless it is explicitly described as an independent damaging technique.</p>
+<p><strong>Damage baseline for newly designed melee weapons:</strong> simple light 1d4, one-handed 1d6, two-handed 1d8; martial/expert light 1d6, one-handed 1d8, two-handed 1d10. Existing user-specified dice and physical specialization override that baseline. Increased dice, exceptional critical profiles, weapon handling and combat maneuvers all draw from the same general power budget. Bows, crossbows, thrown missiles and double weapons follow their listed family profiles.</p>
+<p><strong>Equipment-neutral specialization rule:</strong> A weapon does not gain an attack or damage bonus simply because an opponent wears a particular armor type, carries a particular weapon, or uses a shield. Apply normal AC, DR and combat-maneuver rules. A weapon may still have a distinct, explicitly defined interaction such as the <strong>javelin’s Shield pin</strong>, which is a specific obstruction effect requested for that weapon, not a generic damage or accuracy bonus against shields. Object hardness remains separate from DR. Weapon bonuses should come from grip, attack timing, leverage, reach, maneuver technique, damage profile or similar properties of the attack itself.</p>
+<ul>
+<li><strong>S</strong>: Slashing, normally critical 19–20/x2.</li>
+<li><strong>P</strong>: Piercing, normally critical 20/x3.</li>
+<li><strong>B</strong>: Bludgeoning, normally critical 20/x2 and bypasses damage reduction (DR).</li>
+<li><strong>B + P</strong>: One attack that has <strong>both</strong> damage types at once, not two attacks and not two damage rolls. It inherits bludgeoning DR bypass. Its printed critical profile governs its criticals; the morningstar’s profile is x3. The original flail follows the same interpretation.</li>
+<li><strong>B + S + P</strong>: The sauterelle’s original mixed-damage exception. It is a <strong>single</strong> damage roll using all three types and its printed critical profile.</li>
+</ul>
+<p>The printed critical profile always takes precedence over a type’s default. Specialized blades may have 18–20/x2; specialized picks may have x4. Mixed damage never grants multiple critical rolls or multiple simultaneous multipliers. Where a resistance or vulnerability concerns a type, treat a combined attack as having all of its listed types and resolve its damage once using the campaign’s ordinary resistance rules. No extra damage is created merely by listing two types.</p>
+</section>
+</main></body></html>
