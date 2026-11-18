@@ -1,0 +1,1 @@
+[View the Last Era Armory Weapon Table](https://verimonde.github.io/Last-Era-Armory/)
